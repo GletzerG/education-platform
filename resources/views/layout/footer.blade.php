@@ -159,34 +159,6 @@
                 </div>
             </div>
 
-            <!-- App Download Section -->
-            <div class="app-download-section">
-                <div class="app-content">
-                    <div class="app-text">
-                        <h4>
-                            <i class="fas fa-mobile-alt"></i>
-                            Download Aplikasi Kami
-                        </h4>
-                        <p>Belajar dimana saja, kapan saja dengan aplikasi EduBuddy</p>
-                    </div>
-                    <div class="download-buttons">
-                        <a href="#" class="download-btn">
-                            <i class="fab fa-apple"></i>
-                            <div>
-                                <span>Download on the</span>
-                                <strong>App Store</strong>
-                            </div>
-                        </a>
-                        <a href="#" class="download-btn">
-                            <i class="fab fa-google-play"></i>
-                            <div>
-                                <span>Get it on</span>
-                                <strong>Google Play</strong>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
 
             <!-- Bottom Footer -->
             <div class="footer-bottom">
