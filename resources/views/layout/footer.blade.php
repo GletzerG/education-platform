@@ -4,195 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduBuddy - Teman Setia Waktu Kamu Belajar</title>
-    <link rel="stylesheet" href="#navbar-styles">
-    <link rel="stylesheet" href="#carousel-styles">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-
+    <title>EduBuddy Footer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Navbar -->
-@include('layout.template')
-
-    <!-- Enhanced Carousel Section -->
-    <section class="carousel-wrapper">
-        <div class="carousel-container">
-            <!-- Background Elements -->
-            <div class="carousel-bg-effects">
-                <div class="bg-particle particle-1"></div>
-                <div class="bg-particle particle-2"></div>
-                <div class="bg-particle particle-3"></div>
-                <div class="bg-particle particle-4"></div>
-                <div class="bg-gradient-overlay"></div>
-            </div>
-
-            <!-- Main Carousel -->
-            <div class="carousel">
-                <!-- Slide 1 -->
-                <div class="carousel-slide active" data-slide="1">
-                    <div class="slide-background slide-bg-1">
-                        <div class="slide-pattern"></div>
-                    </div>
-                    <div class="slide-content">
-                        <div class="content-badge">⚡ Quick Learning</div>
-                        <h2 class="slide-title">Cara menjadi jago dalam waktu 2 jam</h2>
-                        <p class="slide-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                            imperdiet tincidunt nunc, maximus interdum risus tincidunt id. In sed aliquam erat. Nam
-                            tempor ullamcorper mi.</p>
-                        <div class="slide-stats">
-                            <div class="stat-item">
-                                <span class="stat-number">2k+</span>
-                                <span class="stat-label">Students</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">4.9</span>
-                                <span class="stat-label">Rating</span>
-                            </div>
-                        </div>
-                        <button class="slide-cta-btn">Mulai Belajar <span>→</span></button>
-                    </div>
-                    <div class="slide-visual">
-                        <div class="visual-element soccer-player-enhanced">
-                            <div class="player-glow"></div>
-                            <div class="player-illustration"></div>
-                            <div class="floating-elements">
-                                <div class="float-icon">⚽</div>
-                                <div class="float-icon">🏆</div>
-                                <div class="float-icon">⭐</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 2 -->
-                <div class="carousel-slide" data-slide="2">
-                    <div class="slide-background slide-bg-2">
-                        <div class="slide-pattern"></div>
-                    </div>
-                    <div class="slide-content">
-                        <div class="content-badge">👨‍🏫 Expert Mentors</div>
-                        <h2 class="slide-title">Belajar dengan mentor terbaik</h2>
-                        <p class="slide-description">Bergabunglah dengan ribuan siswa yang telah merasakan pengalaman
-                            belajar yang luar biasa bersama mentor-mentor terpilih kami. Dapatkan bimbingan personal
-                            yang efektif.</p>
-                        <div class="slide-stats">
-                            <div class="stat-item">
-                                <span class="stat-number">50+</span>
-                                <span class="stat-label">Mentors</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">95%</span>
-                                <span class="stat-label">Success</span>
-                            </div>
-                        </div>
-                        <button class="slide-cta-btn">Find Mentor <span>→</span></button>
-                    </div>
-                    <div class="slide-visual">
-                        <div class="visual-element mentor-illustration">
-                            <div class="mentor-glow"></div>
-                            <div class="mentor-avatar"></div>
-                            <div class="floating-elements">
-                                <div class="float-icon">📚</div>
-                                <div class="float-icon">🎯</div>
-                                <div class="float-icon">💡</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="carousel-slide" data-slide="3">
-                    <div class="slide-background slide-bg-3">
-                        <div class="slide-pattern"></div>
-                    </div>
-                    <div class="slide-content">
-                        <div class="content-badge">🏆 Leaderboard</div>
-                        <h2 class="slide-title">Raih prestasi maksimal bersama</h2>
-                        <p class="slide-description">Kompetisi sehat dan lingkungan belajar yang mendukung akan
-                            memotivasi kamu untuk terus berkembang. Bergabunglah dengan komunitas pelajar yang aktif.
-                        </p>
-                        <div class="slide-stats">
-                            <div class="stat-item">
-                                <span class="stat-number">10k+</span>
-                                <span class="stat-label">Community</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">24/7</span>
-                                <span class="stat-label">Support</span>
-                            </div>
-                        </div>
-                        <button class="slide-cta-btn">Join Now <span>→</span></button>
-                    </div>
-                    <div class="slide-visual">
-                        <div class="visual-element trophy-illustration">
-                            <div class="trophy-glow"></div>
-                            <div class="trophy-icon">🏆</div>
-                            <div class="floating-elements">
-                                <div class="float-icon">🎖️</div>
-                                <div class="float-icon">⭐</div>
-                                <div class="float-icon">🔥</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Enhanced Navigation -->
-            <div class="carousel-navigation">
-                <button class="nav-arrow nav-prev" onclick="changeSlide(-1)">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="15,18 9,12 15,6"></polyline>
-                    </svg>
-                </button>
-                <button class="nav-arrow nav-next" onclick="changeSlide(1)">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="9,18 15,12 9,6"></polyline>
-                    </svg>
-                </button>
-            </div>
-
-            <!-- Enhanced Dots -->
-            <div class="carousel-dots">
-                <div class="dot active" onclick="goToSlide(0)" data-slide="1">
-                    <span class="dot-progress"></span>
-                </div>
-                <div class="dot" onclick="goToSlide(1)" data-slide="2">
-                    <span class="dot-progress"></span>
-                </div>
-                <div class="dot" onclick="goToSlide(2)" data-slide="3">
-                    <span class="dot-progress"></span>
-                </div>
-            </div>
-
-            <!-- Progress Bar -->
-            <div class="carousel-progress">
-                <div class="progress-bar"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bottom Section -->
-    <section class="bottom-section">
-        <div class="brand-section">
-            <h1 class="brand-title">EduBuddy</h1>
-            <p class="brand-subtitle">Teman Setia Waktu Kamu Belajar</p>
-            <button class="cta-button">Start learning</button>
-        </div>
-    </section>
-
-    <script src="#carousel-scripts"></script>
-    <script src="#main-scripts"></script>
-
-
     <!-- Footer Section -->
     <footer class="footer-section">
         <!-- Wave decoration -->
         <div class="footer-wave">
             <svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="currentColor"/>
+                <path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="currentColor" />
             </svg>
         </div>
 
@@ -208,7 +30,8 @@
                         <h3>EduBuddy</h3>
                     </div>
                     <p class="company-description">
-                        Teman setia waktu kamu belajar. Bergabunglah dengan ribuan siswa yang telah merasakan pengalaman belajar yang luar biasa bersama kami.
+                        Teman setia waktu kamu belajar. Bergabunglah dengan ribuan siswa yang telah merasakan pengalaman
+                        belajar yang luar biasa bersama kami.
                     </p>
                     <div class="social-links">
                         <a href="#" class="social-link" data-platform="facebook">
@@ -315,7 +138,8 @@
                             <i class="fas fa-bell"></i>
                             Dapatkan Update Terbaru
                         </h4>
-                        <p>Berlangganan newsletter kami untuk mendapatkan tips belajar, update kursus, dan penawaran khusus.</p>
+                        <p>Berlangganan newsletter kami untuk mendapatkan tips belajar, update kursus, dan penawaran
+                            khusus.</p>
                     </div>
                     <form class="newsletter-form">
                         <div class="input-group">
@@ -328,7 +152,8 @@
                         <label class="checkbox-container">
                             <input type="checkbox" required>
                             <span class="checkmark"></span>
-                            Saya setuju dengan <a href="#privacy">kebijakan privasi</a> dan <a href="#terms">syarat & ketentuan</a>
+                            Saya setuju dengan <a href="#privacy">kebijakan privasi</a> dan <a href="#terms">syarat &
+                                ketentuan</a>
                         </label>
                     </form>
                 </div>
@@ -445,11 +270,25 @@
             animation: fadeInUp 0.8s ease-out;
         }
 
-        .footer-column:nth-child(1) { animation-delay: 0.1s; }
-        .footer-column:nth-child(2) { animation-delay: 0.2s; }
-        .footer-column:nth-child(3) { animation-delay: 0.3s; }
-        .footer-column:nth-child(4) { animation-delay: 0.4s; }
-        .footer-column:nth-child(5) { animation-delay: 0.5s; }
+        .footer-column:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .footer-column:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .footer-column:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .footer-column:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .footer-column:nth-child(5) {
+            animation-delay: 0.5s;
+        }
 
         /* Company Info */
         .company-info .footer-logo {
@@ -752,12 +591,12 @@
             margin-top: 2px;
         }
 
-        .checkbox-container input:checked + .checkmark {
+        .checkbox-container input:checked+.checkmark {
             background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
             border-color: #4fc3f7;
         }
 
-        .checkbox-container input:checked + .checkmark::after {
+        .checkbox-container input:checked+.checkmark::after {
             content: '✓';
             color: white;
             font-size: 12px;
@@ -1007,6 +846,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1014,16 +854,21 @@
         }
 
         @keyframes floatParticles {
-            0%, 100% { 
+
+            0%,
+            100% {
                 transform: translate(0, 0) rotate(0deg) scale(1);
             }
-            25% { 
+
+            25% {
                 transform: translate(30px, -30px) rotate(90deg) scale(1.1);
             }
-            50% { 
+
+            50% {
                 transform: translate(-20px, -50px) rotate(180deg) scale(0.9);
             }
-            75% { 
+
+            75% {
                 transform: translate(-30px, 20px) rotate(270deg) scale(1.05);
             }
         }
@@ -1089,305 +934,3 @@
 
             .legal-links {
                 justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .newsletter-form {
-                max-width: 100%;
-            }
-
-            .input-group {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .input-group button {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .footer-content {
-                padding-top: 2rem;
-            }
-
-            .company-info .footer-logo {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.5rem;
-            }
-
-            .social-links {
-                gap: 0.5rem;
-            }
-
-            .social-link {
-                width: 40px;
-                height: 40px;
-            }
-
-            .contact-item {
-                padding: 0.8rem;
-            }
-
-            .newsletter-section,
-            .app-download-section {
-                padding: 2rem 0;
-            }
-
-            .column-title {
-                font-size: 1.1rem;
-            }
-
-            .download-btn {
-                padding: 0.8rem 1rem;
-            }
-        }
-    </style>
-
-    <script>
-        // ===================
-        // FOOTER FUNCTIONALITY
-        // ===================
-        
-        // Back to top functionality
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Newsletter form submission
-        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = this.querySelector('input[type="email"]').value;
-            const checkbox = this.querySelector('input[type="checkbox"]').checked;
-            
-            if (!checkbox) {
-                alert('Mohon setujui kebijakan privasi dan syarat ketentuan terlebih dahulu.');
-                return;
-            }
-            
-            // Show loading state
-            const button = this.querySelector('button');
-            const originalText = button.innerHTML;
-            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
-            button.disabled = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                alert('Terima kasih! Anda telah berhasil berlangganan newsletter kami.');
-                this.reset();
-                button.innerHTML = originalText;
-                button.disabled = false;
-            }, 2000);
-        });
-
-        // Social media link tracking
-        document.querySelectorAll('.social-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const platform = this.getAttribute('data-platform');
-                console.log(`Redirecting to ${platform}...`);
-                
-                // Add ripple effect
-                const ripple = document.createElement('div');
-                ripple.style.cssText = `
-                    position: absolute;
-                    border-radius: 50%;
-                    background: rgba(255,255,255,0.6);
-                    transform: scale(0);
-                    animation: ripple 0.6s linear;
-                    left: 50%;
-                    top: 50%;
-                    width: 20px;
-                    height: 20px;
-                    margin-left: -10px;
-                    margin-top: -10px;
-                    pointer-events: none;
-                `;
-                
-                this.style.position = 'relative';
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                    // Here you would redirect to actual social media pages
-                    // window.open(`https://${platform}.com/edubuddy`, '_blank');
-                }, 600);
-            });
-        });
-
-        // Download button tracking
-        document.querySelectorAll('.download-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const store = this.querySelector('strong').textContent;
-                console.log(`Redirecting to ${store}...`);
-                
-                // Add download animation
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                    // Here you would redirect to actual app stores
-                }, 150);
-            });
-        });
-
-        // Language selector functionality
-        document.querySelector('.language-selector select').addEventListener('change', function() {
-            const selectedLang = this.value;
-            console.log(`Language changed to: ${selectedLang}`);
-            
-            // Here you would implement actual language switching
-            if (selectedLang === 'en') {
-                // Switch to English
-                console.log('Switching to English...');
-            } else {
-                // Switch to Indonesian
-                console.log('Switching to Indonesian...');
-            }
-        });
-
-        // Intersection Observer for animations
-        document.addEventListener('DOMContentLoaded', function() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-
-            // Apply observer to footer columns
-            document.querySelectorAll('.footer-column').forEach((element, index) => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
-                element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-                observer.observe(element);
-            });
-
-            // Apply observer to newsletter and app sections
-            ['.newsletter-section', '.app-download-section'].forEach(selector => {
-                const element = document.querySelector(selector);
-                if (element) {
-                    element.style.opacity = '0';
-                    element.style.transform = 'translateY(30px)';
-                    element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                    observer.observe(element);
-                }
-            });
-        });
-
-        // Add floating particles interaction
-        document.querySelectorAll('.bg-particle').forEach(particle => {
-            particle.addEventListener('mouseenter', function() {
-                this.style.animationPlayState = 'paused';
-                this.style.transform += ' scale(1.2)';
-                this.style.opacity = '0.1';
-            });
-            
-            particle.addEventListener('mouseleave', function() {
-                this.style.animationPlayState = 'running';
-                this.style.transform = this.style.transform.replace(' scale(1.2)', '');
-                this.style.opacity = '0.03';
-            });
-        });
-
-        // Smooth scrolling for footer links
-        document.querySelectorAll('.footer-links a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                } else {
-                    console.log(`Target element #${targetId} not found`);
-                }
-            });
-        });
-
-        // Add ripple animation for buttons
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Show/hide back to top button based on scroll
-        window.addEventListener('scroll', function() {
-            const backToTop = document.querySelector('.back-to-top');
-            if (window.scrollY > 300) {
-                backToTop.style.opacity = '1';
-                backToTop.style.visibility = 'visible';
-                backToTop.style.transform = 'scale(1)';
-            } else {
-                backToTop.style.opacity = '0';
-                backToTop.style.visibility = 'hidden';
-                backToTop.style.transform = 'scale(0.8)';
-            }
-        });
-
-        // Add hover effects for contact items
-        document.querySelectorAll('.contact-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.background = 'rgba(79, 195, 247, 0.1)';
-                this.style.borderColor = 'rgba(79, 195, 247, 0.3)';
-            });
-            
-            item.addEventListener('mouseleave', function() {
-                this.style.background = 'rgba(255, 255, 255, 0.05)';
-                this.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-            });
-        });
-
-        // Footer link click tracking
-        document.querySelectorAll('.footer-links a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                const linkText = this.textContent.trim();
-                const section = this.closest('.footer-column').querySelector('.column-title').textContent.trim();
-                console.log(`Footer link clicked: ${linkText} in ${section} section`);
-            });
-        });
-
-        // Contact info click handlers
-        document.querySelectorAll('.contact-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const label = this.querySelector('.contact-label').textContent;
-                const value = this.querySelector('.contact-value').textContent;
-                
-                if (label === 'Telepon') {
-                    window.open(`tel:${value.replace(/\s/g, '')}`, '_self');
-                } else if (label === 'Email') {
-                    window.open(`mailto:${value}`, '_self');
-                } else if (label === 'Alamat') {
-                    window.open(`https://maps.google.com/?q=${encodeURIComponent(value)}`, '_blank');
-                }
-            });
-        });
-    </script>
-
-
-</body>
