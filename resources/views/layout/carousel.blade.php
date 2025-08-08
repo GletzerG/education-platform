@@ -92,7 +92,7 @@
                     <button class="slide-cta-btn">Join Now <span>→</span></button>
                 </div>
                 <div class="slide-visual">
-                    <img src="{{ asset('images/gambar3.png') }}" alt="Leaderboard Illustration" class="leaderboard-image" style="width: auto;">
+                    <img src="{{ asset('images/gambar3.png') }}" alt="Leaderboard Illustration" class="leaderboard-image " style="width: auto;" class="shadow-lg p-3 mb-5 bg-body rounded">
                 </div>
             </div>
         </div>

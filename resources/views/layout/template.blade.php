@@ -72,7 +72,7 @@
         align-items: center;
         background: rgba(255, 255, 255, 0.95);
         padding: 0.4rem;
-        border-radius: 35px;
+        border-radius: 15px;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(15px);
     }
@@ -82,7 +82,7 @@
         color: #374151;
         font-weight: 600;
         padding: 0.8rem 1.3rem;
-        border-radius: 25px;
+        border-radius: 15px;
         transition: all 0.3s ease;
         position: relative;
         white-space: nowrap;
@@ -336,7 +336,7 @@
     }
 
     .slide-bg-1 {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #008e37 0%, #9bfaba 100%);
     }
 
     .slide-bg-2 {
@@ -344,7 +344,7 @@
     }
 
     .slide-bg-3 {
-        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        background: linear-gradient(135deg, #ff0000 0%, #edc3c3 100%);
     }
 
     .slide-pattern {
