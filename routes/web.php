@@ -31,7 +31,7 @@ Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])
     ->name('admin.dashboard');
 
 Route::get('/mentor/waiting', function () {
-    return view('mentor.waiting'); // buat view untuk pesan menunggu verifikasi
+    return view('mentor.waiting');
 })->name('mentor.waiting')->middleware('auth');
 /*
 |--------------------------------------------------------------------------

@@ -1226,3 +1226,11 @@
         });
     </script>
 
+
+{{--
+ <h1>Dashboard</h1>
+<p>Selamat datang, {{ $user->name }}!</p>
+
+@if($user->hasRole('mentor'))
+    <a>Tambah Materi</a>
+@endif --}}
