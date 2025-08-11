@@ -213,7 +213,6 @@
                 <nav class="bg-white shadow-sm p-4 text-gray-800 border-b border-gray-200">
                     <div class="flex justify-between items-center">
                         <div>
-                            <x-page-header />
                         </div>
                         <div class="flex items-center space-x-4">
                             <div class="flex items-center space-x-2">

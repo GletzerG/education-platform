@@ -6,12 +6,13 @@
                 <div class="logo-icon">📚</div>
             </div>
             <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#daily-mission">Daily Mission</a></li>
-                <li><a href="#classes">Classes</a></li>
-                <li><a href="#mentor">Mentor</a></li>
-                <li><a href="#leaderboard">Leaderboard</a></li>
+                <li><a href="{{ route('dashboard') }}" class="active">Home</a></li>
+                <li><a href="*">Daily Mission</a></li>
+                <li><a href="{{ route('navbar.classes') }}">Classes</a></li>
+                <li><a href="*">Mentor</a></li>
+                <li><a href="*">Leaderboard</a></li>
             </ul>
+
         </div>
         <div class="user-dropdown">
             <div class="user-info" onclick="toggleDropdown()">

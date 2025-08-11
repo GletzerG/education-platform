@@ -33,6 +33,10 @@ Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])
 Route::get('/mentor/waiting', function () {
     return view('mentor.waiting');
 })->name('mentor.waiting')->middleware('auth');
+
+Route::get('/navbar/classes', function () {
+    return view('navbar.classes');
+})->name('navbar.classes');
 /*
 |--------------------------------------------------------------------------
 | Logout

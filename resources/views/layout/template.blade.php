@@ -1278,4 +1278,5 @@
         `;
     document.head.appendChild(style);
 </script>
+@yield('content')
 </body>
