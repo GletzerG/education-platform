@@ -8,10 +8,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+<<<<<<< HEAD
 use App\Models\Activity;
 
 
 
+=======
+use App\Models\ClassModel;
+>>>>>>> af063c86745e52bad4de680d83007a922d6f50b7
 
 class User extends Authenticatable
 {
@@ -53,22 +57,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function isGuru()
-    {
-        return $this->role === 'guru';
-    }
     public function isMentor()
     {
         return $this->role === 'mentor';
     }
+
     public function isSiswa()
     {
         return $this->role === 'siswa';
+    }
+
+    public function isGuru()
+    {
+        return $this->role === 'guru';
     }
     public function canUploadVideo()
     {
         return $this->isMentor() && $this->is_verified;
     }
+<<<<<<< HEAD
 
     public function getSkillsListAttribute()
     {
@@ -79,4 +86,10 @@ class User extends Authenticatable
 {
     return $this->hasMany(Activity::class, 'user_id');
 }
+=======
+    public function classes()
+    {
+        return $this->hasMany(ClassModel::class, 'mentor_id');
+    }
+>>>>>>> af063c86745e52bad4de680d83007a922d6f50b7
 }
