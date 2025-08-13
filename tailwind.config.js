@@ -9,19 +9,29 @@ export default {
         './resources/views/**/*.blade.php',
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
     ],
 
     theme: {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-in': 'slideIn 0.3s ease-out'
+                    }
+                },
             },
         },
-    },
+        
 
  
-    plugins: [
-  require('@tailwindcss/forms'),
-  require('@tailwindcss/typography'),
-]
-};
+        plugins: [
+            require('@tailwindcss/forms'),
+            require('@tailwindcss/typography'),
+        ]
+    }
+}

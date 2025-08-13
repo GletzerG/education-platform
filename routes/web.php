@@ -61,6 +61,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// routes/web.php
+// Profile Routes
+    Route::prefix('profile')->name('profile.')->group(function () {
+        Route::get('/', [ProfileController::class, 'index'])->name('dashboard');
+        Route::put('/', [ProfileController::class, 'update'])->name('update');
+        Route::post('/upload-avatar', [ProfileController::class, 'uploadAvatar'])->name('upload-avatar');
+        Route::get('/settings', [ProfileController::class, 'settings'])->name('settings');
+    });
+    
+    // Dummy routes for quick actions (replace with actual functionality)
+    Route::get('/projects/create', function () {
+        return redirect()->route('profile.dashboard')->with('info', 'Fitur create project akan segera hadir!');
+    })->name('projects.create');
+    
+    Route::get('/reports', function () {
+        return redirect()->route('profile.dashboard')->with('info', 'Fitur reports akan segera hadir!');
+    })->name('reports.index');  
 /*
 |--------------------------------------------------------------------------
 | Mentor Routes (Hanya untuk role: guru)
