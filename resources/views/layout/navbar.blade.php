@@ -8,12 +8,10 @@
                         <ul class="nav-links">
                             <li><a href="{{ route('dashboard') }}"
                                     class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">Home</a></li>
-                            <li><a href="#" class="{{ request()->routeIs('daily.mission') ? 'active' : '' }}">Daily
-                                    Mission</a></li>
                             <li><a href="{{ route('classes.index') }}"
                                     class="{{ request()->routeIs('classes.index') || request()->routeIs('classes.*') ? 'active' : '' }}">Classes</a>
                             </li>
-                            <li><a href="#" class="{{ request()->routeIs('mentor.*') ? 'active' : '' }}">Mentor</a></li>
+                            <li><a href="{{ route('navbar.mentor') }}" class="{{ request()->routeIs('navbar.mentor') ? 'active' : '' }}">Mentor</a></li>
                             <li><a href="#"
                                     class="{{ request()->routeIs('leaderboard') ? 'active' : '' }}">Leaderboard</a></li>
                         </ul>

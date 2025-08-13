@@ -7,6 +7,7 @@ use App\Http\Controllers\MentorController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\NavbarMentorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,11 +44,11 @@ Route::get('/mentor/waiting', function () {
 Route::get('/navbar/classes', function () {
     return view('navbar.classes');
 })->name('navbar.classes');
-/*
-|--------------------------------------------------------------------------
-| Logout
-|--------------------------------------------------------------------------
-*/
+
+Route::get('/navbar/mentor', function () {
+    return view('navbar.mentor');
+})->name('navbar.mentor');
+
 Route::post('/logout', function () {
     Auth::logout();
     request()->session()->invalidate();
@@ -67,7 +68,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-<<<<<<< HEAD
 // routes/web.php
 // Profile Routes
     Route::prefix('profile')->name('profile.')->group(function () {
@@ -85,7 +85,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/reports', function () {
         return redirect()->route('profile.dashboard')->with('info', 'Fitur reports akan segera hadir!');
     })->name('reports.index');  
-=======
+
 
 
 // Semua kelas (public)
@@ -96,7 +96,7 @@ Route::middleware('auth')->group(function () {
 
 
 
->>>>>>> af063c86745e52bad4de680d83007a922d6f50b7
+
 /*
 |--------------------------------------------------------------------------
 | Mentor Routes (Hanya untuk role: guru)
@@ -123,6 +123,10 @@ Route::middleware(['auth', 'role:guru'])->group(function () {
     Route::post('/mentor/approve/{user}', [MentorController::class, 'approve'])->name('mentor.approve');
     Route::post('/mentor/reject/{user}', [MentorController::class, 'reject'])->name('mentor.reject');
 });
+
+Route::get('/mentor/{id}', function ($id) {
+    return "Profile mentor ID: " . $id;
+})->name('mentor.profile');
 
 
 // Auth routes (login, register, forgot password, dll)
