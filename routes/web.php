@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ClassController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,11 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', function () {
     return redirect()->route('dashboard');
 });
+
+
+
+// Mentor only routes
+
 
 // Dashboard Siswa & Mentor
 
@@ -61,11 +67,36 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+
+// Semua kelas (public)
+Route::middleware('auth')->group(function () {
+    Route::get('/classes', [ClassController::class, 'index'])->name('classes.index');
+    Route::get('/classes/{id}', [ClassController::class, 'show'])->name('classes.show');
+});
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Mentor Routes (Hanya untuk role: guru)
 |--------------------------------------------------------------------------
 */
+// routes/web.php
+Route::middleware(['auth', 'role:mentor'])->group(function () {
+    Route::controller(ClassController::class)->group(function () {
+        Route::get('/my-classes', 'my')->name('classes.my');
+        Route::get('/create', 'create')->name('classes.create');
+        Route::post('/classes', 'store')->name('classes.store');
+        Route::get('/classes/{id}/edit', 'edit')->name('classes.edit');
+        Route::put('/classes/{id}', 'update')->name('classes.update');
+        Route::delete('/classes/{id}', 'destroy')->name('classes.destroy');
+    });
+});
+
+
+
+
 Route::middleware(['auth', 'role:guru'])->group(function () {
 
     Route::get('/mentor/pending', [MentorController::class, 'pending'])->name('mentor.pending');

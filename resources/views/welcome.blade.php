@@ -1,24 +1,10 @@
-<!DOCTYPE html>
-<html lang="id">
+<!-- Navbar -->
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduBuddy - Teman Setia Waktu Kamu Belajar</title>
-    <link rel="stylesheet" href="#navbar-styles">
-    <link rel="stylesheet" href="#carousel-styles">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-
-</head>
-
-<body>
-    <!-- Navbar -->
-@include('layout.template')
-
+@section('content')
     <!-- Enhanced Carousel Section -->
-@include('layout.carousel')
+    @include('layout.template')
+    @include('layout.carousel')
 
     <script src="#carousel-scripts"></script>
     <script src="#main-scripts"></script>
@@ -29,7 +15,7 @@
         <!-- Wave decoration -->
         <div class="footer-wave">
             <svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="currentColor"/>
+                <path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="currentColor" />
             </svg>
         </div>
 
@@ -45,7 +31,8 @@
                         <h3>EduBuddy</h3>
                     </div>
                     <p class="company-description">
-                        Teman setia waktu kamu belajar. Bergabunglah dengan ribuan siswa yang telah merasakan pengalaman belajar yang luar biasa bersama kami.
+                        Teman setia waktu kamu belajar. Bergabunglah dengan ribuan siswa yang telah merasakan pengalaman
+                        belajar yang luar biasa bersama kami.
                     </p>
                     <div class="social-links">
                         <a href="#" class="social-link" data-platform="facebook">
@@ -152,7 +139,8 @@
                             <i class="fas fa-bell"></i>
                             Dapatkan Update Terbaru
                         </h4>
-                        <p>Berlangganan newsletter kami untuk mendapatkan tips belajar, update kursus, dan penawaran khusus.</p>
+                        <p>Berlangganan newsletter kami untuk mendapatkan tips belajar, update kursus, dan penawaran khusus.
+                        </p>
                     </div>
                     <form class="newsletter-form">
                         <div class="input-group">
@@ -165,7 +153,8 @@
                         <label class="checkbox-container">
                             <input type="checkbox" required>
                             <span class="checkmark"></span>
-                            Saya setuju dengan <a href="#privacy">kebijakan privasi</a> dan <a href="#terms">syarat & ketentuan</a>
+                            Saya setuju dengan <a href="#privacy">kebijakan privasi</a> dan <a href="#terms">syarat &
+                                ketentuan</a>
                         </label>
                     </form>
                 </div>
@@ -238,8 +227,8 @@
 
     <style>
         /* ===================
-           FOOTER STYLES
-           =================== */
+               FOOTER STYLES
+               =================== */
         .footer-section {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: white;
@@ -282,11 +271,25 @@
             animation: fadeInUp 0.8s ease-out;
         }
 
-        .footer-column:nth-child(1) { animation-delay: 0.1s; }
-        .footer-column:nth-child(2) { animation-delay: 0.2s; }
-        .footer-column:nth-child(3) { animation-delay: 0.3s; }
-        .footer-column:nth-child(4) { animation-delay: 0.4s; }
-        .footer-column:nth-child(5) { animation-delay: 0.5s; }
+        .footer-column:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .footer-column:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .footer-column:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .footer-column:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .footer-column:nth-child(5) {
+            animation-delay: 0.5s;
+        }
 
         /* Company Info */
         .company-info .footer-logo {
@@ -589,12 +592,12 @@
             margin-top: 2px;
         }
 
-        .checkbox-container input:checked + .checkmark {
+        .checkbox-container input:checked+.checkmark {
             background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
             border-color: #4fc3f7;
         }
 
-        .checkbox-container input:checked + .checkmark::after {
+        .checkbox-container input:checked+.checkmark::after {
             content: '✓';
             color: white;
             font-size: 12px;
@@ -844,6 +847,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -851,23 +855,28 @@
         }
 
         @keyframes floatParticles {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translate(0, 0) rotate(0deg) scale(1);
             }
+
             25% {
                 transform: translate(30px, -30px) rotate(90deg) scale(1.1);
             }
+
             50% {
                 transform: translate(-20px, -50px) rotate(180deg) scale(0.9);
             }
+
             75% {
                 transform: translate(-30px, 20px) rotate(270deg) scale(1.05);
             }
         }
 
         /* ===================
-           RESPONSIVE DESIGN
-           =================== */
+               RESPONSIVE DESIGN
+               =================== */
         @media (max-width: 1200px) {
             .footer-main {
                 grid-template-columns: 2fr 1fr 1fr 1.2fr;
@@ -1112,7 +1121,8 @@
             document.querySelectorAll('.footer-column').forEach((element, index) => {
                 element.style.opacity = '0';
                 element.style.transform = 'translateY(30px)';
-                element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                element.style.transition =
+                    `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
                 observer.observe(element);
             });
 
@@ -1204,7 +1214,8 @@
         document.querySelectorAll('.footer-links a').forEach(link => {
             link.addEventListener('click', function(e) {
                 const linkText = this.textContent.trim();
-                const section = this.closest('.footer-column').querySelector('.column-title').textContent.trim();
+                const section = this.closest('.footer-column').querySelector('.column-title').textContent
+                    .trim();
                 console.log(`Footer link clicked: ${linkText} in ${section} section`);
             });
         });
@@ -1225,12 +1236,12 @@
             });
         });
     </script>
-
+@endsection
 
 {{--
  <h1>Dashboard</h1>
 <p>Selamat datang, {{ $user->name }}!</p>
 
-@if($user->hasRole('mentor'))
+@if ($user->hasRole('mentor'))
     <a>Tambah Materi</a>
 @endif --}}

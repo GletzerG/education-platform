@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\ClassModel;
 
 class User extends Authenticatable
 {
@@ -45,20 +46,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function isGuru()
-    {
-        return $this->role === 'guru';
-    }
     public function isMentor()
     {
         return $this->role === 'mentor';
     }
+
     public function isSiswa()
     {
         return $this->role === 'siswa';
     }
+
+    public function isGuru()
+    {
+        return $this->role === 'guru';
+    }
     public function canUploadVideo()
     {
         return $this->isMentor() && $this->is_verified;
+    }
+    public function classes()
+    {
+        return $this->hasMany(ClassModel::class, 'mentor_id');
     }
 }

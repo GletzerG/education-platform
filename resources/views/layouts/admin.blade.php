@@ -385,17 +385,6 @@
             </div>
         </div>
 
-<<<<<<< HEAD
-        {{-- Main Content Area --}}
-        <div class="flex-1 ml-64">
-            {{-- Navbar (Optional/Override) --}}
-            @hasSection('navbar')
-                @yield('navbar')
-            @else
-                <nav class="bg-white shadow-sm p-4 text-gray-800 border-b border-gray-200">
-                    <div class="flex justify-between items-center">
-                        <div>
-=======
         <!-- User Profile -->
         <div class="user-profile">
             <div class="flex items-center">
@@ -428,6 +417,10 @@
 
                     </a>
                 </li>
+
+             
+
+
             </ul>
         </nav>
 
@@ -479,7 +472,6 @@
                         <div class="hidden lg:block text-right">
                             <p class="text-sm font-semibold text-gray-900">{{ auth()->user()->name ?? 'Admin User' }}</p>
                             <p class="text-xs text-gray-500">Administrator</p>
->>>>>>> 9332f0d00c36868e34a55376105b631e9fee4f10
                         </div>
                         <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
                             {{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}
