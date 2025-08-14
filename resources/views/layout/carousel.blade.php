@@ -136,7 +136,6 @@
     <div class="brand-section">
         <h1 class="brand-title">EduBuddy</h1>
         <p class="brand-subtitle">Teman Setia Waktu Kamu Belajar</p>
-
             <a href="{{ route('navbar.classes') }}" class="cta-button">Start learning</a>
     </div>
 </section>
