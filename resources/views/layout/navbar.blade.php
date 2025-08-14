@@ -36,7 +36,7 @@
                                 <span class="dropdown-icon">👤</span>
                                 Profile
                             </a>
-                            
+
 
                             @if (auth()->check())
                                 {{-- Logout --}}

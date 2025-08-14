@@ -314,6 +314,7 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -329,6 +330,7 @@
                 transform: translateX(-20px);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -364,6 +366,7 @@
 
     @stack('styles')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -403,7 +406,7 @@
             <ul class="space-y-1">
                 <li>
                     <a href="{{ route('admin.dashboard') }}"
-                       class="nav-link {{ request()->routeIs('admin.dashboard*') ? 'active' : '' }}">
+                        class="nav-link {{ request()->routeIs('admin.dashboard*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-home"></i>
                         <span class="nav-text">Dashboard</span>
                     </a>
@@ -411,7 +414,7 @@
 
                 <li>
                     <a href="{{ route('mentor.pending') }}"
-                       class="nav-link {{ request()->routeIs('mentor.pending*') ? 'active' : '' }}">
+                        class="nav-link {{ request()->routeIs('mentor.pending*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user-graduate"></i>
                         <span class="nav-text">Mentor Requests</span>
 
@@ -435,7 +438,7 @@
             </form>
         </div>
     </aside>
-    
+
 
     <!-- Main Content -->
     <div class="main-content" id="mainContent">
@@ -471,10 +474,12 @@
                     <!-- User Dropdown -->
                     <div class="flex items-center space-x-3">
                         <div class="hidden lg:block text-right">
-                            <p class="text-sm font-semibold text-gray-900">{{ auth()->user()->name ?? 'Admin User' }}</p>
+                            <p class="text-sm font-semibold text-gray-900">{{ auth()->user()->name ?? 'Admin User' }}
+                            </p>
                             <p class="text-xs text-gray-500">Administrator</p>
                         </div>
-                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
                             {{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}
                         </div>
                     </div>
@@ -485,7 +490,7 @@
         <!-- Content Area -->
         <main class="content-wrapper fade-in">
             <!-- Alert Messages -->
-            @if(session('success'))
+            @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
                     <div class="flex items-center">
                         <i class="fas fa-check-circle text-green-600 mr-3"></i>
@@ -497,7 +502,7 @@
                 </div>
             @endif
 
-            @if(session('error'))
+            @if (session('error'))
                 <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
                     <div class="flex items-center">
                         <i class="fas fa-exclamation-triangle text-red-600 mr-3"></i>
@@ -783,13 +788,13 @@
         }
 
         // Display session messages
-        @if(session('success'))
+        @if (session('success'))
             if (typeof toastr !== 'undefined') {
                 toastr.success("{{ session('success') }}", 'Berhasil! 🎉');
             }
         @endif
 
-        @if(session('error'))
+        @if (session('error'))
             if (typeof toastr !== 'undefined') {
                 toastr.error("{{ session('error') }}", 'Error! ⚠️');
             }

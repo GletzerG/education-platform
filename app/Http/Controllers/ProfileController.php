@@ -123,7 +123,6 @@ class ProfileController extends Controller
             $user->avatar = $avatarPath;
         }
 
-        
         // Prepare data for update
         $updateData = $request->only(['name', 'email', 'phone', 'location', 'bio']);
 

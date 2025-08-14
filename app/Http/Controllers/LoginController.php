@@ -19,12 +19,5 @@ class LoginController extends Controller
         // Mentor & Siswa sama-sama ke /dashboard
         return redirect()->route('dashboard');
     }
-    public function logout(Request $request)
-    {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
 
-        return redirect('/login');
-    }
 }

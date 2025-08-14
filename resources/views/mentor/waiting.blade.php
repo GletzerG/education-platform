@@ -23,7 +23,7 @@
         .floating-animation {
             animation: float 6s ease-in-out infinite;
         }
-        
+
 
         .floating-animation:nth-child(2) {
             animation-delay: 2s;
