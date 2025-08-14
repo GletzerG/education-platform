@@ -20,19 +20,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-<<<<<<< HEAD
-        'name', 
-        'email', 
-        'password', 
-        'phone', 
-        'location', 
-        'bio', 
-        'avatar', 
-        'skills',
-        'is_verified'
-    ];
-
-=======
     'name',
     'email',
     'password',
@@ -44,7 +31,6 @@ class User extends Authenticatable
     ];
 
 
->>>>>>> 1a8e5e05b719ce86ffa66b9dfe4e9e166d7f3a4a
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -134,19 +120,5 @@ class User extends Authenticatable
         return $this->hasMany(ClassModel::class, 'mentor_id');
     }
 
-<<<<<<< HEAD
-    /**
-     * Get user avatar URL.
-     */
-    public function getAvatarUrlAttribute(): string
-    {
-        if ($this->avatar) {
-            return asset('storage/' . $this->avatar);
-        }
-        return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&background=random';
-    }
-}
-=======
 
 }
->>>>>>> 1a8e5e05b719ce86ffa66b9dfe4e9e166d7f3a4a
