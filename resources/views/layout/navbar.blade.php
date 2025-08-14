@@ -32,10 +32,10 @@
 
                         <div class="dropdown-menu">
                             {{-- Profile Link --}}
-                            <a href="{{ route('profile.index') }}" class="dropdown-item">
-                                <span class="dropdown-icon">👤</span>
-                                Profile
-                            </a>
+                        <a href="/profile" class="dropdown-item" onclick="handleProfileClick(event)">
+                            <span class="dropdown-icon">👤</span>
+                            Profile
+                        </a>
                             
 
                             @if (auth()->check())

@@ -62,9 +62,9 @@
                         class="w-32 h-32 rounded-full border-4 border-white/20 group-hover:border-white/40 transition-all duration-300 object-cover">
                 </div>
 
+
                 <div class="flex-1 text-center md:text-left">
                     <h2 class="text-3xl font-bold text-white mb-2">{{ $user->name }}</h2>
-                    <p class="text-white/70 mb-4">{{ $user->skills ? implode(', ', $user->skills) : 'Belum ada skill' }}</p>
                     <p class="text-white/60 mb-6 max-w-2xl">{{ $user->bio ?? 'Belum ada bio.' }}</p>
 
                     <div class="flex flex-wrap gap-4 justify-center md:justify-start">
