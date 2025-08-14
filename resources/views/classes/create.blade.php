@@ -1,3 +1,6 @@
+{{-- //buat agar mirip dengan kode dibawah --}}
+
+
 @extends('layouts.app')
 
 @section('content')
@@ -432,3 +435,4 @@
         }
     </style>
 @endsection
+

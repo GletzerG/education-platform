@@ -8,7 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\Activity;
 use App\Models\ClassModel;
+
 
 class User extends Authenticatable
 {
@@ -20,12 +22,16 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role',
-        'is_verified',
+    'name',
+    'email',
+    'password',
+    'phone',
+    'location',
+    'bio',
+    'avatar',
+    'skills'
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -64,9 +70,21 @@ class User extends Authenticatable
     {
         return $this->isMentor() && $this->is_verified;
     }
+
+    public function getSkillsListAttribute()
+    {
+        return $this->skills ?? [];
+    }
+
+    public function activities()
+{
+    return $this->hasMany(Activity::class, 'user_id');
+}
+
     public function classes()
     {
         return $this->hasMany(ClassModel::class, 'mentor_id');
     }
-    
+
+
 }

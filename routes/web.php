@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\NavbarMentorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,11 +45,15 @@ Route::get('/mentor/waiting', function () {
 Route::get('/navbar/classes', function () {
     return view('navbar.classes');
 })->name('navbar.classes');
-/*
-|--------------------------------------------------------------------------
-| Logout
-|--------------------------------------------------------------------------
-*/
+
+Route::get('/navbar/mentor', function () {
+    return view('navbar.mentor');
+})->name('navbar.mentor');
+
+Route::get('/navbar/classes', [ClassController::class, 'index'])
+    ->name('navbar.classes')
+    ->middleware('auth');
+
 Route::post('/logout', function () {
     Auth::logout();
     request()->session()->invalidate();
@@ -68,6 +73,24 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// routes/web.php
+// Profile Routes
+    Route::prefix('profile')->name('profile.')->group(function () {
+        Route::get('/', [ProfileController::class, 'index'])->name('dashboard');
+        Route::put('/', [ProfileController::class, 'update'])->name('update');
+        Route::post('/upload-avatar', [ProfileController::class, 'uploadAvatar'])->name('upload-avatar');
+        Route::get('/settings', [ProfileController::class, 'settings'])->name('settings');
+    });
+
+    // Dummy routes for quick actions (replace with actual functionality)
+    Route::get('/projects/create', function () {
+        return redirect()->route('profile.dashboard')->with('info', 'Fitur create project akan segera hadir!');
+    })->name('projects.create');
+
+    Route::get('/reports', function () {
+        return redirect()->route('profile.dashboard')->with('info', 'Fitur reports akan segera hadir!');
+    })->name('reports.index');
+
 
 
 // Semua kelas (public)
@@ -80,6 +103,15 @@ Route::middleware('auth')->group(function () {
 });
 
 // Mentor-only routes
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Mentor Routes (Hanya untuk role: guru)
+|--------------------------------------------------------------------------
+*/
+// routes/web.php
 Route::middleware(['auth', 'role:mentor'])->group(function () {
     // Group ClassController
     Route::controller(ClassController::class)->group(function () {
@@ -109,6 +141,10 @@ Route::middleware(['auth', 'role:guru'])->group(function () {
     Route::post('/mentor/approve/{user}', [MentorController::class, 'approve'])->name('mentor.approve');
     Route::post('/mentor/reject/{user}', [MentorController::class, 'reject'])->name('mentor.reject');
 });
+
+Route::get('/mentor/{id}', function ($id) {
+    return "Profile mentor ID: " . $id;
+})->name('mentor.profile');
 
 
 // Auth routes (login, register, forgot password, dll)
