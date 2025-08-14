@@ -7,6 +7,7 @@ use App\Http\Controllers\MentorController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\MaterialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,31 +72,36 @@ Route::middleware('auth')->group(function () {
 
 // Semua kelas (public)
 Route::middleware('auth')->group(function () {
+    // Public routes (bisa diakses semua role)
     Route::get('/classes', [ClassController::class, 'index'])->name('classes.index');
     Route::get('/classes/{id}', [ClassController::class, 'show'])->name('classes.show');
+    Route::get('/classes/{id}/learn', [ClassController::class, 'learn'])->name('classes.learn');
+    Route::get('/materials/{material}', [MaterialController::class, 'show'])->name('materials.show');
 });
 
-
-
-/*
-|--------------------------------------------------------------------------
-| Mentor Routes (Hanya untuk role: guru)
-|--------------------------------------------------------------------------
-*/
-// routes/web.php
+// Mentor-only routes
 Route::middleware(['auth', 'role:mentor'])->group(function () {
+    // Group ClassController
     Route::controller(ClassController::class)->group(function () {
         Route::get('/my-classes', 'my')->name('classes.my');
-        Route::get('/create', 'create')->name('classes.create');
+        Route::get('/create', 'create')->name('classes.create'); // Diperbaiki path-nya
         Route::post('/classes', 'store')->name('classes.store');
         Route::get('/classes/{id}/edit', 'edit')->name('classes.edit');
         Route::put('/classes/{id}', 'update')->name('classes.update');
         Route::delete('/classes/{id}', 'destroy')->name('classes.destroy');
     });
+
+    // Group MaterialController
+    Route::controller(MaterialController::class)->group(function () {
+        Route::get('/materials/create/{class}', 'create')->name('materials.create');
+          Route::get('/materials/{material}/edit', [MaterialController::class, 'edit'])->name('materials.edit');
+    Route::put('/materials/{material}', [MaterialController::class, 'update'])->name('materials.update');
+    Route::delete('/materials/{material}', [MaterialController::class, 'destroy'])->name('materials.destroy');
+
+        Route::post('/materials', 'store')->name('materials.store');
+        // Tambahkan route material lainnya jika perlu
+    });
 });
-
-
-
 
 Route::middleware(['auth', 'role:guru'])->group(function () {
 

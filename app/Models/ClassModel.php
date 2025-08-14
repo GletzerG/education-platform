@@ -27,4 +27,10 @@ class ClassModel extends Model
     {
         return $this->belongsTo(User::class, 'mentor_id');
     }
+    // Relasi ke User (mentor)
+    public function materials()
+{
+    // Mengarah ke model Material, foreign key = class_id
+    return $this->hasMany(Material::class, 'class_id');
+}
 }

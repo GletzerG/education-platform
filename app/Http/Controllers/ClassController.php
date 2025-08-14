@@ -110,4 +110,38 @@ class ClassController extends Controller
         return redirect()->route('classes.my')
             ->with('success', 'Class deleted successfully!');
     }
+    public function learn($id)
+    {
+        $class = ClassModel::with(['materials' => function ($query) {
+            $query->orderBy('created_at', 'asc');
+        }])->findOrFail($id);
+
+        // Cek role dan kepemilikan kelas
+        if (auth()->user()->role === 'siswa') {
+            // Siswa: hanya melihat materi untuk belajar
+            return view('classes.learn', [
+                'class' => $class,
+                'isMentorOwner' => false
+            ]);
+        }
+
+        if (auth()->user()->role === 'mentor') {
+            if ($class->mentor_id === auth()->id()) {
+                // Mentor pemilik kelas: melihat halaman seperti siswa
+                // tapi nanti di Blade bisa bedakan pakai $isMentorOwner = true
+                return view('classes.learn', [
+                    'class' => $class,
+                    'isMentorOwner' => true
+                ]);
+            } else {
+                // Mentor tapi bukan pemilik kelas → treat seperti siswa
+                return view('classes.learn', [
+                    'class' => $class,
+                    'isMentorOwner' => false
+                ]);
+            }
+        }
+
+        abort(403, 'Unauthorized action.');
+    }
 }
