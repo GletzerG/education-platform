@@ -28,13 +28,28 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        
+        // Handle skills - convert array to JSON if needed
+        $validatedData = $request->validated();
+        if (isset($validatedData['skills']) && is_array($validatedData['skills'])) {
+            $validatedData['skills'] = json_encode($validatedData['skills']);
+        }
+        
+        $user->fill($validatedData);
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        $user->save();
+
+        // Log activity
+        Activity::create([
+            'user_id' => $user->id,
+            'action' => 'Updated profile information',
+            'type' => 'info'
+        ]);
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
@@ -63,7 +78,7 @@ class ProfileController extends Controller
     /**
      * Dashboard profile user.
      */
-    public function index()
+    public function index(): View
     {
         $user = Auth::user();
         $stats = [
@@ -84,7 +99,7 @@ class ProfileController extends Controller
     /**
      * Update detail profile custom (termasuk avatar).
      */
-    public function updateProfile(Request $request)
+    public function updateProfile(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -93,11 +108,13 @@ class ProfileController extends Controller
             'location' => 'nullable|string|max:255',
             'bio' => 'nullable|string|max:500',
             'skills' => 'nullable|array',
+            'skills.*' => 'string|max:50',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        $user = \App\Models\User::find(Auth::id());
+        $user = Auth::user();
 
+        // Handle avatar upload
         if ($request->hasFile('avatar')) {
             if ($user->avatar) {
                 Storage::delete('public/' . $user->avatar);
@@ -106,10 +123,17 @@ class ProfileController extends Controller
             $user->avatar = $avatarPath;
         }
 
-        $user->fill($request->only([
-            'name', 'email', 'phone', 'location', 'bio', 'skills'
-        ]));
-        $user->save();
+        // Prepare data for update
+        $updateData = $request->only(['name', 'email', 'phone', 'location', 'bio']);
+        
+        // Handle skills - convert to JSON string
+        if ($request->has('skills') && is_array($request->skills)) {
+            $updateData['skills'] = json_encode($request->skills);
+        } elseif ($request->has('skills') && is_null($request->skills)) {
+            $updateData['skills'] = null;
+        }
+
+        $user->update($updateData);
 
         Activity::create([
             'user_id' => $user->id,
@@ -117,7 +141,7 @@ class ProfileController extends Controller
             'type' => 'info'
         ]);
 
-        return redirect()->route('profile.dashboard')
+        return redirect()->route('profile.index')
             ->with('success', 'Profile berhasil diupdate!');
     }
 
@@ -132,10 +156,19 @@ class ProfileController extends Controller
 
         $user = Auth::user();
 
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User not authenticated'
+            ], 401);
+        }
+
+        // Delete old avatar if exists
         if ($user->avatar) {
             Storage::delete('public/' . $user->avatar);
         }
 
+        // Store new avatar
         $avatarPath = $request->file('avatar')->store('avatars', 'public');
         $user->update(['avatar' => $avatarPath]);
 

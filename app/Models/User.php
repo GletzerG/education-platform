@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,7 +9,6 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\Activity;
 use App\Models\ClassModel;
-
 
 class User extends Authenticatable
 {
@@ -51,36 +49,72 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'skills' => 'array', // Cast skills sebagai array
+        'is_verified' => 'boolean',
     ];
-    public function isMentor()
+
+    /**
+     * Check if user is mentor using Spatie Permission.
+     */
+    public function isMentor(): bool
     {
-        return $this->role === 'mentor';
+        return $this->hasRole('mentor');
     }
 
-    public function isSiswa()
+    /**
+     * Check if user is siswa using Spatie Permission.
+     */
+    public function isSiswa(): bool
     {
-        return $this->role === 'siswa';
+        return $this->hasRole('siswa');
     }
 
-    public function isGuru()
+    /**
+     * Check if user is guru using Spatie Permission.
+     */
+    public function isGuru(): bool
     {
-        return $this->role === 'guru';
+        return $this->hasRole('guru');
     }
-    public function canUploadVideo()
+
+    /**
+     * Check if user can upload video.
+     */
+    public function canUploadVideo(): bool
     {
         return $this->isMentor() && $this->is_verified;
     }
 
-    public function getSkillsListAttribute()
+    /**
+     * Get skills as array (accessor).
+     */
+    public function getSkillsListAttribute(): array
     {
         return $this->skills ?? [];
     }
 
-    public function activities()
-{
-    return $this->hasMany(Activity::class, 'user_id');
-}
+    /**
+     * Get skills as comma-separated string.
+     */
+    public function getSkillsStringAttribute(): string
+    {
+        if (!$this->skills || !is_array($this->skills)) {
+            return '';
+        }
+        return implode(', ', $this->skills);
+    }
 
+    /**
+     * Relationship: User has many activities.
+     */
+    public function activities()
+    {
+        return $this->hasMany(Activity::class, 'user_id');
+    }
+
+    /**
+     * Relationship: User has many classes (as mentor).
+     */
     public function classes()
     {
         return $this->hasMany(ClassModel::class, 'mentor_id');
