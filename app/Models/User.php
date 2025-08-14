@@ -22,6 +22,9 @@ class User extends Authenticatable
 protected $fillable = [
     'name',
     'email',
+    'role',
+    'is_verified',
+    'password',
     'phone',
     'location',
     'bio',
@@ -57,26 +60,17 @@ protected $fillable = [
     /**
      * Check if user is mentor using Spatie Permission.
      */
-    public function isMentor(): bool
+   public function isGuru()
     {
-        return $this->hasRole('mentor');
+        return $this->role === 'guru';
     }
-
-    /**
-     * Check if user is siswa using Spatie Permission.
-     */
-    public function isSiswa(): bool
+    public function isMentor()
     {
-        return $this->hasRole('siswa');
+        return $this->role === 'mentor';
     }
-    
-
-    /**
-     * Check if user is guru using Spatie Permission.
-     */
-    public function isGuru(): bool
+    public function isSiswa()
     {
-        return $this->hasRole('guru');
+        return $this->role === 'siswa';
     }
 
     /**

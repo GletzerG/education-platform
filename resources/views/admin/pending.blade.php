@@ -1705,6 +1705,11 @@
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $(function() {
             let table;
 
@@ -2016,7 +2021,7 @@
                         showToast(`Permohonan mentor "${mentorName}" berhasil`,
                             'success', 5000);
                     },
-                    
+
                     error: function(xhr) {
                         console.error('Form submission error:', xhr);
                         let errorMsg = 'Terjadi kesalahan sistem';
