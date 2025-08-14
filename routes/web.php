@@ -49,6 +49,10 @@ Route::get('/navbar/mentor', function () {
     return view('navbar.mentor');
 })->name('navbar.mentor');
 
+Route::get('/navbar/classes', [ClassController::class, 'index'])
+    ->name('navbar.classes')
+    ->middleware('auth');
+
 Route::post('/logout', function () {
     Auth::logout();
     request()->session()->invalidate();
