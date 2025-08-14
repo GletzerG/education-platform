@@ -19,6 +19,7 @@
         text-align: center;
         margin-bottom: 50px;
     }
+    
 
     .page-title {
         font-size: 3rem;

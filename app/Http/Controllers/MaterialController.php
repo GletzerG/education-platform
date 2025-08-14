@@ -179,5 +179,6 @@ class MaterialController extends Controller
 
         // Return original URL if not recognized
         return $url;
+        
     }
 }

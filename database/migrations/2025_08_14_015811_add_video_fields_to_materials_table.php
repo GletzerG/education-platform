@@ -26,4 +26,5 @@ return new class extends Migration
             $table->dropColumn(['video_path', 'video_url']);
         });
     }
+    
 };

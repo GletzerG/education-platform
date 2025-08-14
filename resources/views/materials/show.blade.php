@@ -802,5 +802,6 @@
                 });
             });
         </script>
+        
     @endpush
 @endsection

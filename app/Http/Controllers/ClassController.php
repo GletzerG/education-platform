@@ -138,6 +138,7 @@ class ClassController extends Controller
                 return view('classes.learn', [
                     'class' => $class,
                     'isMentorOwner' => false
+                    
                 ]);
             }
         }

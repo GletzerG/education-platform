@@ -68,6 +68,7 @@ class User extends Authenticatable
     {
         return $this->hasRole('siswa');
     }
+    
 
     /**
      * Check if user is guru using Spatie Permission.

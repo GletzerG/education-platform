@@ -417,6 +417,7 @@
                                     <p class="info-text">{{ $class->created_at->format('j M Y') }}</p>
                                 </div>
                             </div>
+                            
 
                             <div class="info-item">
                                 <div class="info-icon">

@@ -22,6 +22,7 @@
     to {
         transform: translateX(0);
     }
+    
 }
 
 @keyframes fadeSlideUp {

@@ -26,6 +26,7 @@
         * {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;

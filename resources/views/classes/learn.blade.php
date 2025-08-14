@@ -425,6 +425,7 @@
                                                         method="POST" class="d-inline"
                                                         onsubmit="return confirm('Yakin mau hapus materi ini?');">
                                                         @csrf
+                                                        
                                                         @method('DELETE')
                                                         <button class="btn-delete" title="Hapus Materi">
                                                             <i class="fas fa-trash"></i>

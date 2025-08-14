@@ -33,6 +33,7 @@ class MentorController extends Controller
     }
 
 
+    
     public function approve(User $user)
     {
         if ($user->role !== 'mentor') {

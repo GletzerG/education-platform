@@ -33,4 +33,5 @@ class ClassModel extends Model
     // Mengarah ke model Material, foreign key = class_id
     return $this->hasMany(Material::class, 'class_id');
 }
+
 }

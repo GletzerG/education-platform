@@ -29,14 +29,15 @@
                             @endif
                             <span class="dropdown-arrow">▼</span>
                         </div>
-                    
+
                         <div class="dropdown-menu">
                             {{-- Profile Link --}}
                             <a href="{{ route('profile.index') }}" class="dropdown-item">
                                 <span class="dropdown-icon">👤</span>
                                 Profile
                             </a>
-                    
+                            
+
                             @if (auth()->check())
                                 {{-- Logout --}}
                                 <form action="{{ route('logout') }}" method="POST" style="margin: 0;">

@@ -7,6 +7,8 @@ use App\Http\Controllers\MentorController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\NavbarMentorController;
 
 // Redirect root ke dashboard
 Route::get('/', function () {
@@ -51,22 +53,32 @@ Route::post('/logout', function () {
 Route::middleware('auth')->group(function () {
     // Dashboard profil (user lihat profil)
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-    
+
     // Form edit profil (Breeze)
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    
+
     // Update profil (Breeze default)
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    
+
     // Hapus akun
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
     // Update profil custom (termasuk avatar)
     Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update.custom');
-    
+
     // Upload avatar saja (AJAX) - HANYA INI YANG DIPAKAI
     Route::post('/profile/upload-avatar', [ProfileController::class, 'uploadAvatar'])->name('profile.upload-avatar');
 });
+
+
+// Dummy routes for quick actions (replace with actual functionality)
+Route::get('/projects/create', function () {
+    return redirect()->route('profile.dashboard')->with('info', 'Fitur create project akan segera hadir!');
+})->name('projects.create');
+
+Route::get('/reports', function () {
+    return redirect()->route('profile.dashboard')->with('info', 'Fitur reports akan segera hadir!');
+})->name('reports.index');
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +88,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/classes', [ClassController::class, 'index'])->name('classes.index');
     Route::get('/classes/{id}', [ClassController::class, 'show'])->name('classes.show');
+    Route::get('/classes/{id}/learn', [ClassController::class, 'learn'])->name('classes.learn');
+    Route::get('/materials/{material}', [MaterialController::class, 'show'])->name('materials.show');
 });
 
 /*
@@ -91,6 +105,16 @@ Route::middleware(['auth', 'role:mentor'])->group(function () {
         Route::get('/classes/{id}/edit', 'edit')->name('classes.edit');
         Route::put('/classes/{id}', 'update')->name('classes.update');
         Route::delete('/classes/{id}', 'destroy')->name('classes.destroy');
+    });
+
+    Route::controller(MaterialController::class)->group(function () {
+        Route::get('/materials/create/{class}', 'create')->name('materials.create');
+        Route::get('/materials/{material}/edit', [MaterialController::class, 'edit'])->name('materials.edit');
+        Route::put('/materials/{material}', [MaterialController::class, 'update'])->name('materials.update');
+        Route::delete('/materials/{material}', [MaterialController::class, 'destroy'])->name('materials.destroy');
+
+        Route::post('/materials', 'store')->name('materials.store');
+        // Tambahkan route material lainnya jika perlu
     });
 });
 

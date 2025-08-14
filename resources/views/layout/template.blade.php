@@ -1166,6 +1166,7 @@
             carousel.previousSlide();
         }
     }
+    
 
     function goToSlide(index) {
         carousel.goToSlide(index);

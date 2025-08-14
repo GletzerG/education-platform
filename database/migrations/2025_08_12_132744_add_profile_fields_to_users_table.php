@@ -28,6 +28,7 @@ return new class extends Migration
                 'phone', 'location', 'bio', 'avatar', 'skills',
                 'total_projects', 'completed_tasks', 'total_hours', 'achievements'
             ]);
+            
         });
     }
 };

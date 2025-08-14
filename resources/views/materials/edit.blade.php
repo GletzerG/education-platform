@@ -139,6 +139,7 @@
                                             <i class="fas fa-play-circle"></i>
                                             <h3>Current Video</h3>
                                         </div>
+                                        
                                         <div class="settings-body">
                                             @if($material->getVideoType() === 'file')
                                                 <div class="video-container">

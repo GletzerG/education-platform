@@ -24,6 +24,7 @@
                     margin: 0 auto;
                 }
 
+
                 .page-header {
                     text-align: center;
                     margin-bottom: 50px;

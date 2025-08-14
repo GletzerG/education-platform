@@ -29,13 +29,13 @@ class ProfileController extends Controller
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $user = $request->user();
-        
+
         // Handle skills - convert array to JSON if needed
         $validatedData = $request->validated();
         if (isset($validatedData['skills']) && is_array($validatedData['skills'])) {
             $validatedData['skills'] = json_encode($validatedData['skills']);
         }
-        
+
         $user->fill($validatedData);
 
         if ($user->isDirty('email')) {
@@ -123,9 +123,10 @@ class ProfileController extends Controller
             $user->avatar = $avatarPath;
         }
 
+        
         // Prepare data for update
         $updateData = $request->only(['name', 'email', 'phone', 'location', 'bio']);
-        
+
         // Handle skills - convert to JSON string
         if ($request->has('skills') && is_array($request->skills)) {
             $updateData['skills'] = json_encode($request->skills);

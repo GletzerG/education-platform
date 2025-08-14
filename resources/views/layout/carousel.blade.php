@@ -8,7 +8,7 @@
             <div class="bg-particle particle-4"></div>
             <div class="bg-gradient-overlay"></div>
         </div>
-
+        
         <!-- Main Carousel -->
         <div class="carousel">
             <!-- Slide 1 -->

@@ -175,6 +175,7 @@
                                             @enderror
                                         </div>
 
+
                                         <!-- Video Preview -->
                                         <div id="videoPreview" class="video-preview d-none">
                                             <div class="preview-content">

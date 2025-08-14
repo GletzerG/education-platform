@@ -59,6 +59,7 @@ class Material extends Model
     {
         return !empty($this->video_path) || !empty($this->video_url);
     }
+    
 
     /**
      * Get video type (file or url).
