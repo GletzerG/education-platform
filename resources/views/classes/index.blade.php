@@ -19,7 +19,7 @@
         text-align: center;
         margin-bottom: 50px;
     }
-    
+
 
     .page-title {
         font-size: 3rem;
@@ -238,6 +238,35 @@
         margin-bottom: 25px;
     }
 
+    /* Tombol khusus untuk no-classes yang lebih kecil dan rapi */
+    .create-first-btn {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .create-first-btn:hover {
+        color: white;
+        text-decoration: none;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        background: linear-gradient(45deg, #5a6fd8, #6a42a0);
+    }
+
+    .create-first-btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
         .classes-container {
@@ -261,6 +290,11 @@
         .header-btn {
             width: 200px;
             text-align: center;
+        }
+
+        .create-first-btn {
+            padding: 10px 25px;
+            font-size: 0.9rem;
         }
     }
 </style>
@@ -305,7 +339,7 @@
                 <h3>No Classes Available</h3>
                 <p>There are no classes available at the moment. Check back later or create your first class!</p>
                 @if(auth()->user()->isMentor())
-                    <a href="{{ route('classes.create') }}" class="view-details-btn" style="max-width: 200px; margin: 0 auto;">
+                    <a href="{{ route('classes.create') }}" class="create-first-btn">
                         <i class="fas fa-plus me-2"></i>Create First Class
                     </a>
                 @endif
@@ -379,6 +413,17 @@
     document.querySelectorAll('.view-details-btn').forEach(btn => {
         btn.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-2px) scale(1.02)';
+        });
+
+        btn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+
+    // Enhanced button hover effects untuk create-first-btn
+    document.querySelectorAll('.create-first-btn').forEach(btn => {
+        btn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) scale(1.05)';
         });
 
         btn.addEventListener('mouseleave', function() {

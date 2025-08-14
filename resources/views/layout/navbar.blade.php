@@ -32,11 +32,19 @@
 
                         <div class="dropdown-menu">
                             {{-- Profile Link --}}
+<<<<<<< HEAD
                         <a href="/profile" class="dropdown-item" onclick="handleProfileClick(event)">
                             <span class="dropdown-icon">👤</span>
                             Profile
                         </a>
                             
+=======
+                            <a href="{{ route('profile.index') }}" class="dropdown-item">
+                                <span class="dropdown-icon">👤</span>
+                                Profile
+                            </a>
+
+>>>>>>> afff028f18eb5586c3e0b8d1aa2dbb7e573549b3
 
                             @if (auth()->check())
                                 {{-- Logout --}}

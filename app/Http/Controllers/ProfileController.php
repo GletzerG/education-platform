@@ -10,17 +10,31 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use App\Models\Activity;
 
 class ProfileController extends Controller
 {
     /**
-     * Menampilkan dashboard profile.
+     * Dashboard profile user.
      */
     public function index(): View
     {
-        return view('user.profile', [
-            'user' => Auth::user(),
-        ]);
+        $user = Auth::user();
+
+        $stats = [
+            'projects' => 24,
+            'tasks' => 156,
+            'hours' => 1245,
+            'achievements' => 12
+        ];
+
+        $activities = $user->activities()
+            ->latest()
+            ->limit(10)
+            ->get();
+
+        return view('user.profile', compact('user', 'stats', 'activities'));
     }
 
     /**
@@ -34,30 +48,51 @@ class ProfileController extends Controller
     }
 
     /**
-     * Update profil user.
+     * Update profil user (data + avatar).
      */
-    public function update(ProfileUpdateRequest $request)
+    public function updateProfile(Request $request): RedirectResponse
     {
-        $user = $request->user();
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . Auth::id(),
+            'phone' => 'nullable|string|max:20',
+            'location' => 'nullable|string|max:255',
+            'bio' => 'nullable|string|max:500',
+            'skills' => 'nullable|array',
+            'skills.*' => 'string|max:50',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
 
-        $validatedData = $request->validated();
+        $user = Auth::user();
 
-        // Handle skills array
-        if (isset($validatedData['skills']) && is_array($validatedData['skills'])) {
-            $validatedData['skills'] = json_encode($validatedData['skills']);
-        }
-
-        // Upload foto profil
-        if ($request->hasFile('photo')) {
-            if ($user->photo) {
-                Storage::delete($user->photo);
+        // Handle avatar upload
+        if ($request->hasFile('avatar')) {
+            if ($user->avatar) {
+                Storage::delete('public/' . $user->avatar);
             }
-            $validatedData['photo'] = $request->file('photo')->store('profile-photos', 'public');
+            $avatarPath = $request->file('avatar')->store('avatars', 'public');
+            $user->avatar = $avatarPath;
         }
 
-        $user->update($validatedData);
+        // Prepare data update
+        $updateData = $request->only(['name', 'email', 'phone', 'location', 'bio']);
 
-        return Redirect::route('profile.index')->with('status', 'profile-updated');
+        if ($request->has('skills') && is_array($request->skills)) {
+            $updateData['skills'] = json_encode($request->skills);
+        } elseif ($request->has('skills') && is_null($request->skills)) {
+            $updateData['skills'] = null;
+        }
+
+        $user->update($updateData);
+
+        Activity::create([
+            'user_id' => $user->id,
+            'action' => 'Updated profile information',
+            'type' => 'info'
+        ]);
+
+        return redirect()->route('profile.index')
+            ->with('success', 'Profile berhasil diupdate!');
     }
 
     /**
@@ -96,5 +131,42 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    /**
+     * Upload avatar saja (API/AJAX).
+     */
+    public function uploadAvatar(Request $request)
+    {
+        $request->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        $user = Auth::user();
+
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User not authenticated'
+            ], 401);
+        }
+
+        if ($user->avatar) {
+            Storage::delete('public/' . $user->avatar);
+        }
+
+        $avatarPath = $request->file('avatar')->store('avatars', 'public');
+        $user->update(['avatar' => $avatarPath]);
+
+        Activity::create([
+            'user_id' => $user->id,
+            'action' => 'Updated profile picture',
+            'type' => 'info'
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'avatar_url' => asset('storage/' . $avatarPath)
+        ]);
     }
 }
