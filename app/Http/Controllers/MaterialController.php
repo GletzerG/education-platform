@@ -144,7 +144,7 @@ class MaterialController extends Controller
             ->with('success', 'Materi berhasil diperbarui!');
     }
 
-    // Hapus materi
+    // Hapus materiii
     public function destroy(Material $material)
     {
         if ($material->class->mentor_id !== auth()->id()) {
