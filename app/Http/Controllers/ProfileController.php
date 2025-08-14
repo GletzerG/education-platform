@@ -112,7 +112,7 @@ class ProfileController extends Controller
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        $user = Auth::user();
+        $user = \App\Models\User::find(Auth::id());
 
         // Handle avatar upload
         if ($request->hasFile('avatar')) {
@@ -123,6 +123,7 @@ class ProfileController extends Controller
             $user->avatar = $avatarPath;
         }
 
+<<<<<<< HEAD
         // Prepare data for update
         $updateData = $request->only(['name', 'email', 'phone', 'location', 'bio']);
         
@@ -134,6 +135,12 @@ class ProfileController extends Controller
         }
 
         $user->update($updateData);
+=======
+        $user->fill($request->only([
+            'name', 'email', 'phone', 'location', 'bio', 'skills'
+        ]));
+        $user->save();
+>>>>>>> 1a8e5e05b719ce86ffa66b9dfe4e9e166d7f3a4a
 
         Activity::create([
             'user_id' => $user->id,
