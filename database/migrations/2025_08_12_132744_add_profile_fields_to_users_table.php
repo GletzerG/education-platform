@@ -18,6 +18,9 @@ return new class extends Migration
             $table->integer('completed_tasks')->default(0);
             $table->integer('total_hours')->default(0);
             $table->integer('achievements')->default(0);
+            Schema::table('users', function (Blueprint $table) {
+                $table->string('profile_photo_path')->nullable();
+            });
         });
     }
 
@@ -31,4 +34,6 @@ return new class extends Migration
             
         });
     }
+
+    
 };
