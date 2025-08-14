@@ -225,7 +225,7 @@
                                                        onchange="handleVideoUrl(this)">
                                             </div>
                                             <div class="form-hint-small">
-                                                Supports YouTube, Vimeo, etc.
+                                                Supports YouTube , Vimeo, etc.
                                             </div>
                                             @error('video_url')
                                                 <div class="error-message">{{ $message }}</div>
