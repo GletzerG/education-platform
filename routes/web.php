@@ -182,4 +182,3 @@ use App\Http\Controllers\NavbarMentorController;
                 ->name('profile.destroy');
         });
     });
-});
