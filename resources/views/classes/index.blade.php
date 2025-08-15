@@ -240,18 +240,21 @@
 
     /* Tombol khusus untuk no-classes yang lebih kecil dan rapi */
     .create-first-btn {
-        background: linear-gradient(45deg, #667eea, #764ba2);
-        color: white;
-        border: none;
-        padding: 12px 30px;
-        border-radius: 25px;
-        font-weight: 600;
-        text-decoration: none;
-        display: inline-block;
-        text-align: center;
-        transition: all 0.3s ease;
-        font-size: 0.95rem;
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        background: linear-gradient(45deg, #667eea, #764ba2) !important;
+        color: white !important;
+        border: none !important;
+        padding: 12px 30px !important;
+        border-radius: 25px !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        display: inline-block !important;
+        text-align: center !important;
+        transition: all 0.3s ease !important;
+        font-size: 0.95rem !important;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+        width: auto !important;
+        max-width: 200px !important;
+        white-space: nowrap !important;
     }
 
     .create-first-btn:hover {
@@ -340,7 +343,7 @@
                 <p>There are no classes available at the moment. Check back later or create your first class!</p>
                 @if(auth()->user()->isMentor())
                     <a href="{{ route('classes.create') }}" class="create-first-btn">
-                        <i class="fas fa-plus me-2"></i>Create First Class
+                        Create First Class
                     </a>
                 @endif
             </div>

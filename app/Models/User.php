@@ -113,6 +113,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(ClassModel::class, 'mentor_id');
     }
+    
 
 
 }
